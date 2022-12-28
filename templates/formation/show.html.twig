@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+{% block title %}{{parent()}} - Edit {% endblock %}
+{% block titre %}{{parent()|upper}} - consultation de {{formation.getTitre()}} {% endblock %}
+{% block body %}
+
+<h1> le nom du formation est {{formation.getTitre()}} </h1>
+<h1> le prix du formation est {{formation.getPrice()}} </h1>
+<h1> le prix du formation est {{formation.getDuree()}} </h1>
+<h2> Date de debut {{formation.getBeginAt()| date('d-m-y')}} </h2>
+
+
+
+{% endblock %}

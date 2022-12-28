@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<h2> Liste des participants 
+    
+    </h2>
+
+	<table class="table table-hover table-striped" border="1">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Nom
+				</th>
+				<th>Email</th>
+				<th>is_subscribe</th>
+				<th>fonction</th>
+                <th>titre du formation </th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for participants in lesParticipants %}
+				<tr>
+					<td>{{participants.id}}</td>
+					<td>{{participants.Nom |upper}}</td>
+					<td>{{participants.Email}}</td>
+					<td>{{participants.fonction}}</td>
+                    <td>{{participants.formation.titre}}</td>
+					<td>
+						<a class="btn btn-primary" href="#">Voir</a>
+						<a class="btn btn-info" href="{{path('editP',{'id':participants.id})}}">Modifier</a>
+						<a class="btn btn-danger" href="{{path('participant_delete',{'id':participants.id})}}" onclick="return confirm('Are you sure to delete!{{ participants.nom}}')">Supprimer</a>
+						
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">Aucun abonné</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	
+
+	<table class="table table-hover table-striped" border="1">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Titre
+				</th>
+				<th>Price</th>
+				<th>Duree</th>
+				<th>Begin_at</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for formation in lesFormations %}
+				<tr>
+					<td>{{formation.id}}</td>
+					<td>{{formation.titre |upper}}</td>
+					<td>{{formation.beginAt |date('d/m/y')}}</td>
+					<td>{{formation.duree}}</td>
+					<td>
+						<a class="btn btn-primary" href="#">Voir</a>
+						<a class="btn btn-info" href="#">Modifier</a>
+						
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">Aucun abonné</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

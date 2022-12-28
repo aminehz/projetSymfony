@@ -84,7 +84,7 @@ class FormationController extends AbstractController
             $entityManger->persist($formation);
             $entityManger->flush();
             //return new Response('Formation number'.$formation->getId().'created');
-            return $this->redirectToRoute("home");
+            return $this->redirectToRoute("show");
         }
 
         return $this->render('formation/ajouter.html.twig',[
@@ -94,7 +94,7 @@ class FormationController extends AbstractController
 
     }
     /**
-     * @Route("/home",name="home")
+     * @Route("/home",name="show")
      */
     public function home(){
         $em=$this->getDoctrine()->getManager();

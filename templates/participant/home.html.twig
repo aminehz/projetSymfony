@@ -25,7 +25,6 @@
 					<td>{{participants.fonction}}</td>
                     <td>{{participants.formation.titre}}</td>
 					<td>
-						<a class="btn btn-primary" href="#">Voir</a>
 						<a class="btn btn-info" href="{{path('editP',{'id':participants.id})}}">Modifier</a>
 						<a class="btn btn-danger" href="{{path('participant_delete',{'id':participants.id})}}" onclick="return confirm('Are you sure to delete!{{ participants.nom}}')">Supprimer</a>
 						

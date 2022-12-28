@@ -38,7 +38,7 @@ class ParticipantController extends AbstractController
             $entityManger->flush();
           
            
-            return $this->redirectToRoute("home");
+            return $this->redirectToRoute("Participant_home");
         }
    
 
@@ -48,7 +48,7 @@ class ParticipantController extends AbstractController
     }
     
     /**
-     * @Route("/home",name="home")
+     * @Route("/home",name="Participant_home")
      */
     public function home()
     {
@@ -75,7 +75,7 @@ class ParticipantController extends AbstractController
             $entityManger=$this->getDoctrine()->getManager();
             $entityManger->remove($p);
             $entityManger->flush();
-            return $this->redirectToRoute("home");
+            return $this->redirectToRoute("Participant_home");
     }
 
     /**

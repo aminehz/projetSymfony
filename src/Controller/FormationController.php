@@ -105,4 +105,51 @@ class FormationController extends AbstractController
         ]);
     }
 
+     /**
+     *@Route("/delete/{id}",name="formation_delete")
+     */
+    public function delete(Request $request,$id):Response
+    {
+        $p=$this->getDoctrine()
+            ->getRepository(Formation::class)
+            ->find($id);
+            if(!$p){
+                throw $this->createNotFoundException(
+                    'No participant found for id'.$id
+                );
+            }
+            $entityManger=$this->getDoctrine()->getManager();
+            $entityManger->remove($p);
+            $entityManger->flush();
+            return $this->redirectToRoute("show");
+    }
+   /**
+     * @Route("/editF/{id}",name="editF")
+     * Method({"GET","POST"})
+     */
+    public function edit(Request $request,$id)
+    {
+        $formation=new Formation();
+        $formation=$this->getDoctrine()->getRepository(Formation::class)
+                          ->find($id);
+        if(!$formation){
+            throw $this->createNotFoundException(
+                'No participant found for id'.$id
+            );
+        }
+        $form=$this->createForm(FormationType::class,$formation);
+        $form->handleRequest($request);
+        if($form->isSubmitted())
+        {
+            $entityManger=$this->getDoctrine()->getManager();
+            $entityManger->flush();
+            return $this->redirectToRoute("show");
+        }
+        return $this->render('formation/ajouter.html.twig',
+        [
+            "formation_form"=>$form->createView()
+        ]);
+
+    }
+
 }

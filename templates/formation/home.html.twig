@@ -21,8 +21,8 @@
 					<td>{{formation.beginAt |date('d/m/y')}}</td>
 					<td>{{formation.duree}}</td>
 					<td>
-						
-						<a class="btn btn-info" href="#">Modifier</a>
+						<a class="btn btn-info" href="{{path('editF',{'id':formation.id})}}">Modifier</a>
+						<a class="btn btn-danger" href="{{path('formation_delete',{'id':formation.id})}}">Supprimer</a>
 						
 					</td>
 				</tr>

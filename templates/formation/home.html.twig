@@ -1,25 +1,27 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-	
+	<h1 class="d-flex justify-content-center mt-5 mb-5">Liste des formations</h1>
 
 	<table class="table table-hover table-striped" border="1">
-		<thead>
+		<thead class="bg-info">
 			<tr>
 				<th>#</th>
 				<th>Titre
 				</th>
-				<th>Price</th>
-				<th>Duree</th>
 				<th>Begin_at</th>
+				<th>Duree</th>
+				<th>Price</th>
+				<th>Action</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody class="table-light">
 			{% for formation in lesFormations %}
 				<tr>
 					<td>{{formation.id}}</td>
 					<td>{{formation.titre |upper}}</td>
 					<td>{{formation.beginAt |date('d/m/y')}}</td>
 					<td>{{formation.duree}}</td>
+					<td>{{formation.price}}</td>
 					<td>
 						<a class="btn btn-info" href="{{path('editF',{'id':formation.id})}}">Modifier</a>
 						<a class="btn btn-danger" href="{{path('formation_delete',{'id':formation.id})}}">Supprimer</a>

@@ -3,7 +3,39 @@
     Ajout Formation
 {% endblock %}
 {% block body %}
-    <h2> Ajouter une formation </h2>
-    {{form(formation_form)}}
+    <h2 class="d-flex justify-content-center mt-5"> Ajouter une formation </h2>
+    <div class="d-flex justify-content-center mt-5 ">
+    
 
+<div class="card border-info mb-3 " style="max-width: 18rem;">
+  <div class="card-header">Ajouter une formation </div>
+  <div class="card-body text-info alert alert-info  ">
+    {{form_start(formation_form)}}
+<div class="input-field border-primary ">
+{{form_label(formation_form.titre)}} : 
+{{form_widget(formation_form.titre,{'attr':{'placeholder':'Titre de la formation'}})}}
+</div>
+<div class="input-field">
+{{form_label(formation_form.price)}} : 
+{{form_widget(formation_form.price,{'attr':{'placeholder':'Prix de la formation'}})}}
+</div>
+<div class="input-field">
+{{form_label(formation_form.duree)}} : 
+{{form_widget(formation_form.duree,{'attr':{'placeholder':'Duree de la formation'}})}}
+</div>
+<div class="input-field ">
+{{form_label(formation_form.begin_at)}} : 
+{{form_widget(formation_form.begin_at,{'attr':{'placeholder':'Debut de la formation'}})}}
+</div>
+
+<div class="ml-5">
+ {{form_widget(formation_form.Submit)}}
+</div>
+   
+  </div>
+</div>
+{{form_end(formation_form)}}
+
+
+</div>
 {% endblock %} 

@@ -7,6 +7,7 @@ use App\Repository\FormationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Null_;
 
 /**
  * @ORM\Entity(repositoryClass=FormationRepository::class)
@@ -41,7 +42,13 @@ class Formation
     private $begin_at;
 
     /**
-     * @ORM\OneToMany(targetEntity=Participant::class, mappedBy="Formation")
+     * @ORM\Column(type="string",length=255)
+     */
+    private $image;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity=Participant::class, mappedBy="Formation",cascade={"persist", "remove"})
      */
     private $participants;
 
@@ -132,4 +139,21 @@ class Formation
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image): void
+    {
+        $this->image=$image;
+    }
+
 }

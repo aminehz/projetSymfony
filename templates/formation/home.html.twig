@@ -11,6 +11,7 @@
 				<th>Begin_at</th>
 				<th>Duree</th>
 				<th>Price</th>
+				<th>Image</th>
 				<th>Action</th>
 			</tr>
 		</thead>
@@ -22,6 +23,13 @@
 					<td>{{formation.beginAt |date('d/m/y')}}</td>
 					<td>{{formation.duree}}</td>
 					<td>{{formation.price}}</td>
+					{% if formation.image is not empty %}
+					<td><img src="{{publicPath~formation.image}}"/></td>
+					{% else %}
+					<td>Cette formation n'a pas d'image.</td>
+					{% endif %}
+					
+					
 					<td>
 						<a class="btn btn-info" href="{{path('editF',{'id':formation.id})}}">Modifier</a>
 						<a class="btn btn-danger" href="{{path('formation_delete',{'id':formation.id})}}">Supprimer</a>

@@ -76,11 +76,21 @@ class FormationController extends AbstractController
      * @Route("/Ajouter",name="ajouter_formation")
      */
     public function ajouter(Request $request,EntityManagerInterface $entityManger)
-    {   
+    {   $publicPath="uploads/";
         $formation= new Formation();
         $form=$this->createForm(FormationType::class,$formation);
         $form->handleRequest($request);
         if($form->isSubmitted()){
+            /**
+             * @var UploadedFile $image
+             */
+            $image=$form->get('image')->getData();
+            if($image){
+                $imageName=$formation->getTitre().'.'.$image->guessExtension();
+                $image->move($publicPath,$imageName);
+                $formation->setImage($imageName);
+            }
+
             $entityManger->persist($formation);
             $entityManger->flush();
             //return new Response('Formation number'.$formation->getId().'created');
@@ -96,12 +106,14 @@ class FormationController extends AbstractController
     /**
      * @Route("/home",name="show")
      */
-    public function home(){
+    public function home(Request $request){
         $em=$this->getDoctrine()->getManager();
         $repo=$em->getRepository(Formation::class);
         $lesFormations=$repo->findAll();
+        $publicPath=$request->getScheme().'://'.$request->getHttpHost().$request->getBasePath().'/uploads/';
         return $this->render("formation/home.html.twig",[
-            'lesFormations'=>$lesFormations
+            'lesFormations'=>$lesFormations,
+            'publicPath'=>$publicPath
         ]);
     }
 
@@ -129,7 +141,9 @@ class FormationController extends AbstractController
      */
     public function edit(Request $request,$id)
     {
+        $publicPath="uploads/";
         $formation=new Formation();
+
         $formation=$this->getDoctrine()->getRepository(Formation::class)
                           ->find($id);
         if(!$formation){
@@ -141,6 +155,15 @@ class FormationController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted())
         {
+             /**
+             * @var UploadedFile $image
+             */
+            $image=$form->get('image')->getData();
+            if($image){
+                $imageName=$formation->getTitre().'.'.$image->guessExtension();
+                $image->move($publicPath,$imageName);
+                $formation->setImage($imageName);
+            }
             $entityManger=$this->getDoctrine()->getManager();
             $entityManger->flush();
             return $this->redirectToRoute("show");

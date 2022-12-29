@@ -98,7 +98,7 @@ class ParticipantController extends AbstractController
         {
             $entityManger=$this->getDoctrine()->getManager();
             $entityManger->flush();
-            return $this->redirectToRoute("home");
+            return $this->redirectToRoute("Participant_home");
         }
         return $this->render('participant/ajouter.html.twig',
         [

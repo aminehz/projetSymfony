@@ -1,45 +1,52 @@
 {% extends "base.html.twig" %}
 {% block title %}
-    Ajouter Participant
+	Ajouter Participant
 {% endblock %}
 {% block body %}
-    <h2 class="d-flex justify-content-center mt-5"> Ajouter un Participant </h2>
-    <div class="d-flex justify-content-center mt-5 ">
-    
-
-<div class="card border-info mb-3 " style="max-width: 18rem;">
-  <div class="card-header">Ajouter un Participant </div>
-  <div class="card-body text-info alert alert-info  ">
-    {{form_start(participant_form)}}
-<div class="input-field border-primary ">
-{{form_label(participant_form.nom)}} : 
-{{form_widget(participant_form.nom,{'attr':{'placeholder':'Nom du participant'}})}}
-</div>
-<div class="input-field">
-{{form_label(participant_form.email)}} : 
-{{form_widget(participant_form.email,{'attr':{'placeholder':'Email du participant'}})}}
-</div>
-<div class="input-field">
-{{form_label(participant_form.is_subscribe)}} : 
-{{form_widget(participant_form.is_subscribe,{'attr':{'placeholder':''}})}}
-</div>
-<div class="input-field ">
-{{form_label(participant_form.fonction)}} : 
-{{form_widget(participant_form.fonction,{'attr':{'placeholder':'la fonction du participant'}})}}
-</div>
-<div class="input-field ">
-{{form_label(participant_form.formation)}} : 
-{{form_widget(participant_form.formation,{'attr':{'placeholder':''}})}}
-</div>
-
-<div class="ml-5">
- {{form_end(participant_form)}}
-</div>
-   
-  </div>
-</div>
+	<h2 class="d-flex justify-content-center mt-5">
+		Ajouter un Participant
+	</h2>
+	<div class="d-flex justify-content-center mt-5 ">
 
 
+		<div class="card border-info mb-3 " style="max-width: 18rem;">
+			<div class="card-header">Ajouter un Participant
+			</div>
+			<div class="card-body text-info alert alert-info  ">
+				{{form_start(participant_form)}}
+				<div class="input-field border-primary ">
+					{{form_label(participant_form.nom)}}
+					:
+					{{form_widget(participant_form.nom,{'attr':{'placeholder':'Nom du participant'}})}}
+				</div>
+				<div class="input-field">
+					{{form_label(participant_form.email)}}
+					:
+					{{form_widget(participant_form.email,{'attr':{'placeholder':'Email du participant'}})}}
+				</div>
+				<div class="input-field">
+					{{form_label(participant_form.is_subscribe)}}
+					:
+					{{form_widget(participant_form.is_subscribe,{'attr':{'placeholder':''}})}}
+				</div>
+				<div class="input-field ">
+					{{form_label(participant_form.fonction)}}
+					:
+					{{form_widget(participant_form.fonction,{'attr':{'placeholder':'la fonction du participant'}})}}
+				</div>
+				<div class="input-field ">
+					{{form_label(participant_form.formation)}}
+					:
+					{{form_widget(participant_form.formation,{'attr':{'placeholder':''}})}}
+				</div>
 
-</div>
-{% endblock %} 
+				<div class="ml-5">
+					{{form_end(participant_form)}}
+				</div>
+
+			</div>
+		</div>
+
+
+	</div>
+{% endblock %}

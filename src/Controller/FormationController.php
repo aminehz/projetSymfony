@@ -41,6 +41,9 @@ class FormationController extends AbstractController
             'id' => $formation->getId(),
         ]);
     }
+
+
+
         /**
          * @Route("/formation/{id}",name="formation")
          */
@@ -71,6 +74,7 @@ class FormationController extends AbstractController
 
     }
     
+     //============Ajouter une formation===============//
 
     /**
      * @Route("/Ajouter",name="ajouter_formation")
@@ -103,6 +107,9 @@ class FormationController extends AbstractController
 
 
     }
+
+     //============Afficher les formations===============//
+
     /**
      * @Route("/home",name="show")
      */
@@ -116,6 +123,9 @@ class FormationController extends AbstractController
             'publicPath'=>$publicPath
         ]);
     }
+
+
+     //============Effacer une formation===============//
 
      /**
      *@Route("/delete/{id}",name="formation_delete")
@@ -135,6 +145,10 @@ class FormationController extends AbstractController
             $entityManger->flush();
             return $this->redirectToRoute("show");
     }
+
+     //============Modifier une formation===============//
+
+
    /**
      * @Route("/editF/{id}",name="editF")
      * Method({"GET","POST"})

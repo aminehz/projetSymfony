@@ -25,6 +25,8 @@ class ParticipantController extends AbstractController
         ]);
     }
 
+    //============Ajouter un Participant===============//
+
     /**
      * @Route("/Ajouter",name="ajouter")
      */
@@ -46,6 +48,8 @@ class ParticipantController extends AbstractController
             'participant_form'=> $form->createView()
         ]);
     }
+
+     //============Liste Des Participants===============//
     
     /**
      * @Route("/home",name="Participant_home")
@@ -59,6 +63,9 @@ class ParticipantController extends AbstractController
             'lesParticipants'=>$lesParticipants
         ]);
     }
+
+     //============Effacer un Participant===============//
+
     /**
      *@Route("/delete/{id}",name="participant_delete")
      */
@@ -77,6 +84,9 @@ class ParticipantController extends AbstractController
             $entityManger->flush();
             return $this->redirectToRoute("Participant_home");
     }
+
+
+     //============Modifier un Participant===============//
 
     /**
      * @Route("/editP/{id}",name="editP")

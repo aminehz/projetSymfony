@@ -24,7 +24,7 @@
 					<td>{{formation.duree}}</td>
 					<td>{{formation.price}}</td>
 					{% if formation.image is not empty %}
-					<td><img src="{{publicPath~formation.image}}"/></td>
+					<td><img class="w-25" src="{{publicPath~formation.image}}"/></td>
 					{% else %}
 					<td>Cette formation n'a pas d'image.</td>
 					{% endif %}

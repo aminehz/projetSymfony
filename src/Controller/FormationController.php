@@ -97,7 +97,7 @@ class FormationController extends AbstractController
 
             $entityManger->persist($formation);
             $entityManger->flush();
-            //return new Response('Formation number'.$formation->getId().'created');
+           
             return $this->redirectToRoute("show");
         }
 
